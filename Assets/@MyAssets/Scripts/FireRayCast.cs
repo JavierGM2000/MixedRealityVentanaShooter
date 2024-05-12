@@ -37,12 +37,43 @@ public class FireRayCast : MonoBehaviour
             Debug.Log("Did Hit");
             instanciaWindow = Instantiate(WindowPrefab, hit.point,Quaternion.identity);
             instanciaWindow.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
+
+            marcador = GameObject.Find("Marcador").GetComponent<TMP_Text>();
         }
     }
 
     public void fireGun()
     {
-        RaycastHit hit;
+        int layerMask = LayerMask.NameToLayer("Impactable");
+        layerMask = ~layerMask;
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(rayOrig.position, rayOrig.forward, 10f, layerMask);
+
+        bool windowHit = false;
+        List<Transform> globosHit = new List<Transform>();
+
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.transform.tag == "Ventana")
+            {
+                windowHit = true;
+            }
+            else if (hit.transform.tag == "Globo")
+            {
+                globosHit.Add(hit.transform);
+            }
+        }
+
+        if (windowHit)
+        {
+            foreach (Transform tran in globosHit)
+            {
+                counter++;
+                Destroy(tran.gameObject);
+            }
+
+            marcador.text = counter.ToString();
+        }
     }
 
     // Update is called once per frame
