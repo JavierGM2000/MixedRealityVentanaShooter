@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private List<Transform> spawnPointList;
     [SerializeField] int spawnCoolDown;
     [SerializeField] GameObject targetPrefab;
-    [SerializeField] public TextMeshProUGUI text;
+ 
     private float counter;
     // Start is called before the first frame update
     void Start()
@@ -31,16 +31,13 @@ public class GameController : MonoBehaviour
                 spawnTarget(randomIndex);
                 counter = 0;
             }
-            updateScore();
+            
             counter += Time.deltaTime;
         }
         
     }
 
-    private void updateScore()
-    {
-        text.text = ""+score;
-    }
+ 
 
     private void spawnTarget(int index)
     {

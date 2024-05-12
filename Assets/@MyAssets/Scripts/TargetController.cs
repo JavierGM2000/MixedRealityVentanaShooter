@@ -29,11 +29,8 @@ public class TargetController : MonoBehaviour
 
 
 
-    public void destroyTarget() {
-        GameController.score += points;
-        Destroy(gameObject);
+  
     
-    }
     public void destroyByTime() {
         Destroy(gameObject);
     }
