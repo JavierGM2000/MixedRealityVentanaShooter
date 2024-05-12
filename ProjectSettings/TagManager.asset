@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Globo
   - Ventana
+  - GameManager
   layers:
   - Default
   - TransparentFX
