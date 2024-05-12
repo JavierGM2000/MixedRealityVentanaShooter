@@ -8,6 +8,7 @@ public class TargetController : MonoBehaviour
 
     [SerializeField] int lifeTime;
     [SerializeField] int speed;
+    [SerializeField] int points = 100;
     private float counter;
     
     void Start()
@@ -20,7 +21,7 @@ public class TargetController : MonoBehaviour
     {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
         if (counter <= 0) {
-            destroyTarget();
+            destroyByTime();
         }
         counter -= Time.deltaTime;
     }
@@ -28,9 +29,13 @@ public class TargetController : MonoBehaviour
 
 
 
-    public void destroyTarget() { 
+    public void destroyTarget() {
+        GameController.score += points;
         Destroy(gameObject);
     
+    }
+    public void destroyByTime() {
+        Destroy(gameObject);
     }
 
 }
