@@ -6,9 +6,10 @@ using UnityEngine;
 public class FireRayCast : MonoBehaviour
 {
     int counter = 0;
-    [SerializeField]
     TMP_Text marcador;
 
+    [SerializeField]
+    GameObject RayoPrefab;
     [SerializeField]
     GameObject WindowPrefab;
     GameObject instanciaWindow = null;
@@ -44,6 +45,7 @@ public class FireRayCast : MonoBehaviour
 
     public void fireGun()
     {
+        GameObject nuevorayo = Instantiate(RayoPrefab, rayOrig.position,rayOrig.rotation);
         int layerMask = LayerMask.NameToLayer("Impactable");
         layerMask = ~layerMask;
         RaycastHit[] hits;
