@@ -16,6 +16,12 @@ public class LayerApplier : MonoBehaviour
         int layer = LayerMask.NameToLayer(layerName);
         obj.layer = layer;
 
+        if(obj.name == "WALL_FACE_EffectMesh")
+        {
+            MeshCollider mesCollider = obj.AddComponent<MeshCollider>();
+            mesCollider.convex = true;
+        }
+
         foreach (Transform child in obj.transform) ApplyLayer(child.gameObject, layerName);
     }
 }

@@ -13,6 +13,7 @@ public class FireRayCast : MonoBehaviour
     GameObject WindowPrefab;
     GameObject instanciaWindow = null;
 
+    [SerializeField]
     Transform rayOrig;
 
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class FireRayCast : MonoBehaviour
         }
 
         int layerMask = LayerMask.NameToLayer("Wall");
+        layerMask = ~layerMask;
         RaycastHit hit;
         if (Physics.Raycast(rayOrig.position, rayOrig.forward, out hit, 10f, layerMask))
         {
