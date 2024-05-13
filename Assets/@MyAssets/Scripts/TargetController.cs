@@ -10,10 +10,12 @@ public class TargetController : MonoBehaviour
     [SerializeField] int speed;
     [SerializeField] int points = 100;
     private float counter;
+     private static AudioSource deathAudio;
     
     void Start()
     {
         counter = lifeTime;
+        deathAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,7 +34,12 @@ public class TargetController : MonoBehaviour
   
     
     public void destroyByTime() {
+        
         Destroy(gameObject);
     }
 
+    public static void playDeathSound(Vector3 position) { 
+        AudioSource.PlayClipAtPoint(deathAudio.clip, position);
+    
+    }
 }

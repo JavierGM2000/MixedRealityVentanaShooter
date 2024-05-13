@@ -16,8 +16,12 @@ public class FireRayCast : MonoBehaviour
 
     [SerializeField]
     Transform rayOrig;
-
+    [SerializeField]
+    private AudioClip shootingAudio;
+    [SerializeField]
     public GameObject shootParticles;
+    [SerializeField]
+    public Transform muzzle;
     
 
     // Start is called before the first frame update
@@ -41,13 +45,15 @@ public class FireRayCast : MonoBehaviour
             Debug.Log("Did Hit");
             instanciaWindow = Instantiate(WindowPrefab, hit.point,Quaternion.identity);
             instanciaWindow.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
-
+            
             marcador = GameObject.Find("Marcador").GetComponent<TMP_Text>();
         }
     }
 
     public void fireGun()
     {
+        AudioSource.PlayClipAtPoint(shootingAudio,rayOrig.position);
+        
         GameObject nuevorayo = Instantiate(RayoPrefab, rayOrig.position,rayOrig.rotation);
         int layerMask = LayerMask.NameToLayer("Impactable");
         layerMask = ~layerMask;
@@ -56,7 +62,7 @@ public class FireRayCast : MonoBehaviour
         
         bool windowHit = false;
         List<Transform> globosHit = new List<Transform>();
-
+        GameObject flash = Instantiate(shootParticles, muzzle.position, muzzle.rotation);
         foreach (RaycastHit hit in hits)
         {
             if (hit.transform.tag == "Ventana")
@@ -74,6 +80,7 @@ public class FireRayCast : MonoBehaviour
             foreach (Transform tran in globosHit)
             {
                 counter++;
+                TargetController.playDeathSound(tran.position);
                 Destroy(tran.gameObject);
             }
 

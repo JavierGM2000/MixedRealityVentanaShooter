@@ -8533,7 +8533,9 @@ MonoBehaviour:
   WindowPrefab: {fileID: 7397766580099810697, guid: b8edc485b529da94c8aeab513ed3c3a0,
     type: 3}
   rayOrig: {fileID: 1100058539}
-  shootParticles: {fileID: 0}
+  shootingAudio: {fileID: 8300000, guid: 7a62d06f76696ae48a1f731ab0f30caf, type: 3}
+  shootParticles: {fileID: 7449205460240265972, guid: 4c502b9775a8d34459c7d5f72b8a3846,
+    type: 3}
   muzzle: {fileID: 0}
 --- !u!1 &1669691236
 GameObject:

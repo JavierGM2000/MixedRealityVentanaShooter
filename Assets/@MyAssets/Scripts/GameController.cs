@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private List<Transform> spawnPointList;
     [SerializeField] int spawnCoolDown;
     [SerializeField] GameObject targetPrefab;
+    [SerializeField] public GameObject muzzleFash;
  
     private float counter;
     // Start is called before the first frame update
