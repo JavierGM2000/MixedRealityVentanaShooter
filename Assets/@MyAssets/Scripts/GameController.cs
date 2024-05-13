@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private List<Transform> spawnPointList;
     [SerializeField] int spawnCoolDown;
     [SerializeField] GameObject targetPrefab;
+    [SerializeField] public GameObject muzzleFash;
  
     private float counter;
     // Start is called before the first frame update
@@ -43,7 +44,8 @@ public class GameController : MonoBehaviour
     {
 
         Vector3 position =  spawnPointList[index].position;
-        GameObject spawnedPrefab = Instantiate(targetPrefab, position, Quaternion.identity);
+        GameObject spawnedPrefab = Instantiate(targetPrefab, position, transform.rotation);
+        spawnedPrefab.transform.Rotate(new Vector3(0,180,0));
         
     }
 
