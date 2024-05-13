@@ -17,6 +17,9 @@ public class FireRayCast : MonoBehaviour
     [SerializeField]
     Transform rayOrig;
 
+    public GameObject shootParticles;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +53,7 @@ public class FireRayCast : MonoBehaviour
         layerMask = ~layerMask;
         RaycastHit[] hits;
         hits = Physics.RaycastAll(rayOrig.position, rayOrig.forward, 10f, layerMask);
-
+        
         bool windowHit = false;
         List<Transform> globosHit = new List<Transform>();
 

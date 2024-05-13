@@ -3,7 +3,13 @@ guid: b46855a79c6182d4186651fa78d8caa7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - RayoPrefab: {instanceID: 0}
+  - WindowPrefab: {instanceID: 0}
+  - rayOrig: {instanceID: 0}
+  - shootParticles: {fileID: 7449205460240265972, guid: 4c502b9775a8d34459c7d5f72b8a3846,
+      type: 3}
+  - muzzle: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

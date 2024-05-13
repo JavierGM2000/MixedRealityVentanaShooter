@@ -43,7 +43,8 @@ public class GameController : MonoBehaviour
     {
 
         Vector3 position =  spawnPointList[index].position;
-        GameObject spawnedPrefab = Instantiate(targetPrefab, position, Quaternion.identity);
+        GameObject spawnedPrefab = Instantiate(targetPrefab, position, transform.rotation);
+        spawnedPrefab.transform.Rotate(new Vector3(0,180,0));
         
     }
 
